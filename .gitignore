@@ -1,0 +1,5 @@
+.vs/
+TIPiS.Project.sln
+TIPiS.Project/*.pyproj
+
+__pycache__/
