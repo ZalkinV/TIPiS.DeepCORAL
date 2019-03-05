@@ -3,3 +3,8 @@ TIPiS.Project.sln
 **/*.pyproj
 
 __pycache__/
+
+data/images_raw/*
+!data/images_raw/.gitkeep
+data/info/*
+!data/info/.gitkeep
