@@ -30,3 +30,6 @@ class CTScan:
 		self.spacing = np.flip(np.array(self.sitk_image.GetSpacing()))
 		pass
 
+
+	def __world_to_voxel(world_coords):
+		return (np.array(world_coords) - self.origin)/self.spacing
