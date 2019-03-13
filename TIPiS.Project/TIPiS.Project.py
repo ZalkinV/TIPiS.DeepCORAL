@@ -16,15 +16,6 @@ if __name__ == "__main__":
 	print("CT scan files reading:")
 	ct_scans = dp.read_scan_files(PATH_SCANS, scan_names)
 
-
-	print("Annotation:")
-	annotation = pd.read_csv(PATH_ANNOTATION)
-	print(annotation.info(), end='\n\n')
-	print(annotation.describe(), end='\n\n\n')
-
-	print("Candidates:")
-	candidates = pd.read_csv(PATH_CANDIDATES)
-	print(candidates.info(), end='\n\n')
-	print(candidates.describe(), end='\n\n')
-	print(candidates[candidates["class"]==1].count())
+	print("Candidates reading:")
+	candidates = dp.read_candidates(PATH_CANDIDATES, scan_names)
 	pass

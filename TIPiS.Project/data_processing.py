@@ -1,3 +1,4 @@
+import pandas as pd
 import os
 
 from CTScan import CTScan
@@ -25,3 +26,8 @@ def read_scan_files(scans_path, scan_names):
 
 	return ct_scans
 
+
+def read_candidates(file_name, scan_names):
+	candidates_all = pd.read_csv(file_name)
+	candidates_interest = candidates_all.loc[candidates_all["seriesuid"].isin(scan_names)]
+	return candidates_interest
