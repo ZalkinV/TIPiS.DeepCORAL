@@ -14,11 +14,7 @@ if __name__ == "__main__":
 	scan_names = dp.get_scan_names(PATH_SCANS)
 
 	print("CT scan files reading:")
-	ct_scans = list()
-	for scan_file_name in scan_file_names:
-		ct_scans.append(CTScan(scan_file_name, PATH_SCANS))
-		print(scan_file_name)
-	print()
+	ct_scans = dp.read_scan_files(PATH_SCANS, scan_names)
 
 
 	print("Annotation:")
