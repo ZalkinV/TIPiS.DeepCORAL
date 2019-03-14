@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import os
 
@@ -31,3 +32,9 @@ def read_candidates(file_name, scan_names):
 	candidates_all = pd.read_csv(file_name)
 	candidates_interest = candidates_all.loc[candidates_all["seriesuid"].isin(scan_names)]
 	return candidates_interest
+
+
+def world_to_voxel(world_coords, origin, spacing):
+	streched_coord = np.absolute(np.array(world_coords) - origin)
+	voxel_coords = streched_coord / spacing
+	return tuple(map(int, voxel_coords))
