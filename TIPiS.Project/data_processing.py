@@ -28,10 +28,18 @@ def read_scan_files(scans_path, scan_names):
 	return ct_scans
 
 
-def read_candidates(file_name, scan_names):
+def read_candidates(file_name, scans):
 	candidates_all = pd.read_csv(file_name)
-	candidates_interest = candidates_all.loc[candidates_all["seriesuid"].isin(scan_names)]
-	return candidates_interest
+	candidates_all.rename(columns={"coordX" : "x", "coordY" : "y", "coordZ" : "z"}, inplace=True)
+
+	scan_names = scans.keys()
+	for scan_name in scan_names:
+		origin = scans[scan_name].origin
+		spacing = scans[scan_name].spacing
+
+		scans[scan_name].nodules = candidates_all.loc[candidates_all["seriesuid"].isin([scan_name])]
+		print(f"\t{scan_name}")
+	pass
 
 
 def world_to_voxel(world_coords, origin, spacing):
