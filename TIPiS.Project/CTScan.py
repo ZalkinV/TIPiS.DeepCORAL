@@ -2,8 +2,6 @@ import numpy as np
 
 import SimpleITK as sitk
 
-from Nodule import Nodule
-
 
 
 class CTScan:
