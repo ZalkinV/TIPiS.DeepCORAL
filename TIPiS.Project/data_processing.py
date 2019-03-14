@@ -11,7 +11,7 @@ def get_scan_names(scans_path):
 		file_name_wo_extension = file_name.rsplit('.', 1)[0]
 		if file_name_wo_extension != "":
 			scan_names.add(file_name_wo_extension)
-	return scan_names
+	return list(scan_names)
 
 
 def read_scan_files(scans_path, scan_names):
