@@ -16,7 +16,6 @@ class CTScan:
 		self.raw_image = None
 		self.origin = None
 		self.spacing = None
-		self.nodules = None
 		pass
 
 

@@ -13,9 +13,9 @@ PATH_CANDIDATES = "../data/info/candidates.csv"
 if __name__ == "__main__":
 	scan_names = dp.get_scan_names(PATH_SCANS)
 
+	print("Candidates preparing:")
+	candidates = dp.prepare_candidates(PATH_CANDIDATES)
+
 	print("CT scan files reading:")
 	ct_scans = dp.read_scan_files(PATH_SCANS, scan_names)
-
-	print("\n\nCandidates reading:")
-	dp.read_candidates(PATH_CANDIDATES, ct_scans)
 	pass
