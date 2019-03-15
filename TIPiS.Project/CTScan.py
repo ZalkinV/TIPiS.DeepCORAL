@@ -21,9 +21,8 @@ class CTScan:
 
 
 	def read_scan(self):
-		"""origin and spacing are reversing (np.flip()) because .mhg file contain coordinates in (z, y, x) order"""
 		self.sitk_image = sitk.ReadImage(self.path)
 		self.raw_image = sitk.GetArrayFromImage(self.sitk_image)
-		self.origin = np.flip(np.array(self.sitk_image.GetOrigin()))
-		self.spacing = np.flip(np.array(self.sitk_image.GetSpacing()))
-		pass
+		self.origin = np.array(self.sitk_image.GetOrigin())
+		self.spacing = np.array(self.sitk_image.GetSpacing())
+		return self
