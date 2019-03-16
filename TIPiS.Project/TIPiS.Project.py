@@ -3,6 +3,7 @@ import os
 
 from CTScan import CTScan
 import data_processing as dp
+import image_processing as im
 
 
 PATH_SCANS = "../data/images_raw/"
@@ -22,5 +23,5 @@ if __name__ == "__main__":
 
 		for nodule_info in current_scan_candidates.itertuples(index=False):
 			world_coords = nodule_info[1 : 4]
-			image = dp.cut_nodule(current_scan, world_coords, 128)
+			image = im.cut_nodule(current_scan, world_coords, 128)
 	pass

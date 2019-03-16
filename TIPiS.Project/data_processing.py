@@ -45,15 +45,6 @@ def prepare_candidates(file_name):
 	return candidates_prep
 
 
-def cut_nodule(scan, world_coords, size):
-	x_v, y_v, z_v = world_to_voxel(world_coords, scan.origin, scan.spacing)
-	
-	nodule_image_origin = im.cut_subimage(scan.raw_image, x_v, y_v, z_v, size)
-	nodule_image_normalized = im.normalize_image(nodule_image_origin, -1000, 400)
-
-	return nodule_image_normalized
-
-
 def world_to_voxel(world_coords, origin, spacing):
 	streched_coord = np.absolute(np.array(world_coords) - origin)
 	voxel_coords = streched_coord / spacing
