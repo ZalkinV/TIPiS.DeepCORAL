@@ -30,8 +30,17 @@ def prepare_candidates(file_name):
 
 
 	candidates_all = pd.read_csv(file_name)
+
+	print("\tCandidates before processing:")
+	print(candidates_all.info(verbose=False, memory_usage="deep"))
+	print(candidates_all.describe())
+
 	candidates_all.rename(columns={"coordX" : "x", "coordY" : "y", "coordZ" : "z"}, inplace=True)
 	candidates_prep = delete_negative(candidates_all, 3)
+
+	print("\n\n\tCandidates after processing:")
+	print(candidates_prep.info(verbose=False, memory_usage="deep"))
+	print(candidates_prep.describe())
 
 	return candidates_prep
 
