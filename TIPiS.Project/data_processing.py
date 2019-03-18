@@ -55,7 +55,7 @@ def world_to_voxel(world_coords, origin, spacing):
 	return tuple(map(int, voxel_coords))
 
 
-def save_nodules_images(scans_path, scan_names, candidates):
+def save_scan_nodules(scans_path, scan_names, candidates):
 	for scan_name in scan_names:
 		current_scan = CTScan(scan_name, scans_path).read_scan()
 		current_scan_candidates = candidates[candidates["seriesuid"]==scan_name]

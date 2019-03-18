@@ -17,6 +17,6 @@ if __name__ == "__main__":
 	print("Candidates preparing:")
 	candidates = dp.prepare_candidates(PATH_CANDIDATES)
 
-	dp.save_nodules_images(PATH_SCANS, scan_names, candidates)
+	dp.save_scan_nodules(PATH_SCANS, scan_names, candidates)
 
 	pass
