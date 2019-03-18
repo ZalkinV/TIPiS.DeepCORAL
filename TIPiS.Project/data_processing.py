@@ -49,3 +49,16 @@ def world_to_voxel(world_coords, origin, spacing):
 	streched_coord = np.absolute(np.array(world_coords) - origin)
 	voxel_coords = streched_coord / spacing
 	return tuple(map(int, voxel_coords))
+
+
+def save_nodules_images(scans_path, scan_names, candidates):
+	for scan_name in scan_names:
+		current_scan = CTScan(scan_name, scans_path).read_scan()
+		current_scan_candidates = candidates[candidates["seriesuid"]==scan_name]
+
+		for nodule_info in current_scan_candidates.itertuples(index=False):
+			world_coords = nodule_info[1 : 4]
+			nodule_label = nodule_info[-1]
+
+			image = im.cut_nodule(current_scan, world_coords, 128)
+	pass

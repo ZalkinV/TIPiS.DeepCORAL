@@ -17,11 +17,6 @@ if __name__ == "__main__":
 	print("Candidates preparing:")
 	candidates = dp.prepare_candidates(PATH_CANDIDATES)
 
-	for scan_name in scan_names:
-		current_scan = CTScan(scan_name, PATH_SCANS).read_scan()
-		current_scan_candidates = candidates[candidates["seriesuid"]==scan_name]
+	dp.save_nodules_images(PATH_SCANS, scan_names, candidates)
 
-		for nodule_info in current_scan_candidates.itertuples(index=False):
-			world_coords = nodule_info[1 : 4]
-			image = im.cut_nodule(current_scan, world_coords, 128)
 	pass
