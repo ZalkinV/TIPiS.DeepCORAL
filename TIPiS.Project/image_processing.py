@@ -2,6 +2,8 @@ import data_processing as dp
 
 
 
+HU_MIN = -1000 # Max Haunsfield Unit
+HU_MAX = 400 # Min Haunsfield Unit
 SIZE_NODULE_IMAGE = 128
 
 
@@ -10,7 +12,7 @@ def cut_nodule(scan, world_coords, size):
 	x_v, y_v, z_v = dp.world_to_voxel(world_coords, scan.origin, scan.spacing)
 	
 	nodule_image_origin = cut_subimage(scan.raw_image, x_v, y_v, z_v, size)
-	nodule_image_normalized = normalize_image(nodule_image_origin, -1000, 400)
+	nodule_image_normalized = normalize_image(nodule_image_origin, HU_MIN, HU_MAX)
 
 	return nodule_image_normalized
 
