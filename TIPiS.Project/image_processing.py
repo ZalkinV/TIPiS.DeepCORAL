@@ -1,6 +1,9 @@
 import data_processing as dp
 
 
+SIZE_NODULE_IMAGE = 128
+
+
 def cut_nodule(scan, world_coords, size):
 	x_v, y_v, z_v = dp.world_to_voxel(world_coords, scan.origin, scan.spacing)
 	
@@ -40,7 +43,7 @@ def save_nodules_images(file, scan, nodules_info):
 	nodule_index = 0
 	for nodule_info in nodules_info.itertuples(index=False):
 		world_coords = nodule_info[1 : 4]
-		image = cut_nodule(scan, world_coords, 128)
+		image = cut_nodule(scan, world_coords, SIZE_NODULE_IMAGE)
 
 		nodule_class = nodule_info[-1]
 		nodule_name = str(nodule_index)
