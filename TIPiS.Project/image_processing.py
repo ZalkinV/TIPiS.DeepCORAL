@@ -34,3 +34,19 @@ def normalize_image(image, min, max):
 	image[image > 1] = 1
 	image[image < 0] = 0
 	return image
+
+
+def save_nodule_image(file, scan, nodules_info):
+	nodule_index = 0
+	for nodule_info in nodules_info.itertuples(index=False):
+		world_coords = nodule_info[1 : 4]
+		image = cut_nodule(scan, world_coords, 128)
+
+		nodule_class = nodule_info[-1]
+		nodule_name = str(nodule_index)
+		nodule_index += 1
+
+		file.create_dataset(nodule_name, data=image)
+		file[nodule_name].attrs["coords"] = world_coords
+		file[nodule_name].attrs["class"] = nodule_class
+	pass

@@ -62,16 +62,5 @@ def save_nodules_images(scans_path, scan_names, candidates):
 
 		scan_file_path = PATH_IMAGES_PREPARED + scan_name + ".hdf5"
 		with h5py.File(scan_file_path, "w") as scan_file:
-			nodule_index = 0
-			for nodule_info in current_scan_candidates.itertuples(index=False):
-				world_coords = nodule_info[1 : 4]
-				image = im.cut_nodule(current_scan, world_coords, 128)
-
-				nodule_class = nodule_info[-1]
-				nodule_name = str(nodule_index)
-				nodule_index += 1
-
-				scan_file.create_dataset(nodule_name, data=image)
-				scan_file[nodule_name].attrs["coords"] = world_coords
-				scan_file[nodule_name].attrs["class"] = nodule_class
+			im.save_nodule_image(scan_file, current_scan, current_scan_candidates)
 	pass
