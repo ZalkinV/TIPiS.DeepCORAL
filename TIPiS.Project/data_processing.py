@@ -1,9 +1,13 @@
 import numpy as np
 import pandas as pd
 import os
+import h5py
 
 from CTScan import CTScan
 import image_processing as im
+
+
+PATH_IMAGES_PREPARED = "../data/images_prepared/"
 
 
 def get_scan_names(scans_path):
@@ -56,9 +60,18 @@ def save_nodules_images(scans_path, scan_names, candidates):
 		current_scan = CTScan(scan_name, scans_path).read_scan()
 		current_scan_candidates = candidates[candidates["seriesuid"]==scan_name]
 
-		for nodule_info in current_scan_candidates.itertuples(index=False):
-			world_coords = nodule_info[1 : 4]
-			nodule_label = nodule_info[-1]
+		scan_file_path = PATH_IMAGES_PREPARED + scan_name + ".hdf5"
+		with h5py.File(scan_file_path, "w") as scan_file:
+			nodule_index = 0
+			for nodule_info in current_scan_candidates.itertuples(index=False):
+				world_coords = nodule_info[1 : 4]
+				image = im.cut_nodule(current_scan, world_coords, 128)
 
-			image = im.cut_nodule(current_scan, world_coords, 128)
+				nodule_class = nodule_info[-1]
+				nodule_name = str(nodule_index)
+				nodule_index += 1
+
+				scan_file.create_dataset(nodule_name, data=image)
+				scan_file[nodule_name].attrs["coords"] = world_coords
+				scan_file[nodule_name].attrs["class"] = nodule_class
 	pass

@@ -5,6 +5,6 @@ TIPiS.Project.sln
 __pycache__/
 
 data/images_raw/*
-!data/images_raw/.gitkeep
+data/images_prepared/*
 data/info/*
-!data/info/.gitkeep
+!.gitkeep
