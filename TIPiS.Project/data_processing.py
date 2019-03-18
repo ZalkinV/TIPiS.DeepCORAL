@@ -62,5 +62,5 @@ def save_scan_nodules(scans_path, scan_names, candidates):
 
 		scan_file_path = PATH_IMAGES_PREPARED + scan_name + ".hdf5"
 		with h5py.File(scan_file_path, "w") as scan_file:
-			im.save_nodule_image(scan_file, current_scan, current_scan_candidates)
+			im.save_nodules_images(scan_file, current_scan, current_scan_candidates)
 	pass

@@ -36,7 +36,7 @@ def normalize_image(image, min, max):
 	return image
 
 
-def save_nodule_image(file, scan, nodules_info):
+def save_nodules_images(file, scan, nodules_info):
 	nodule_index = 0
 	for nodule_info in nodules_info.itertuples(index=False):
 		world_coords = nodule_info[1 : 4]
