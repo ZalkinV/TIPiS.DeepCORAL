@@ -1,7 +1,9 @@
 import data_processing as dp
 
 
+
 SIZE_NODULE_IMAGE = 128
+
 
 
 def cut_nodule(scan, world_coords, size):

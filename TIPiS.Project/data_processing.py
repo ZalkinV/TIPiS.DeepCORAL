@@ -7,7 +7,22 @@ from CTScan import CTScan
 import image_processing as im
 
 
+
+PATH_SCANS = "../data/images_raw/"
 PATH_IMAGES_PREPARED = "../data/images_prepared/"
+PATH_ANNOTATION = "../data/info/annotations.csv"
+PATH_CANDIDATES = "../data/info/candidates.csv"
+
+
+
+def process_data():
+	scan_names = get_scan_names(PATH_SCANS)
+
+	print("Candidates preparing:")
+	candidates = prepare_candidates(PATH_CANDIDATES)
+
+	save_scan_nodules(PATH_SCANS, scan_names, candidates)
+	pass
 
 
 def get_scan_names(scans_path):
@@ -63,4 +78,10 @@ def save_scan_nodules(scans_path, scan_names, candidates):
 		scan_file_path = PATH_IMAGES_PREPARED + scan_name + ".hdf5"
 		with h5py.File(scan_file_path, "w") as scan_file:
 			im.save_nodules_images(scan_file, current_scan, current_scan_candidates)
+	pass
+
+
+
+if __name__ == "main":
+	process_data()
 	pass
