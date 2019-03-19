@@ -46,7 +46,7 @@ def normalize_image(image, min, max):
 def save_nodules_images(file, scan, nodules_info):
 	nodule_index = 0
 	for nodule_info in nodules_info.itertuples(index=False):
-		world_coords = nodule_info[1 : 4]
+		world_coords = nodule_info[1:4]
 		nodule_class = nodule_info[-1]
 		image = cut_nodule(scan, world_coords, SIZE_NODULE_IMAGE)
 
