@@ -20,17 +20,17 @@ def cut_nodule(scan, world_coords, size):
 def cut_subimage(image, x, y, z, size):
 	left = max(x - size // 2, 0)
 	right = left + size
-	imageWidth = image.shape[1]
-	if (right > imageWidth):
-		left -= right - imageWidth
-		right = imageWidth
+	image_width = image.shape[1]
+	if right > image_width:
+		left -= right - image_width
+		right = image_width
 
 	bottom = max(y - size // 2, 0)
 	top = bottom + size
-	imageHeight = image.shape[2]
-	if (top > imageHeight):
-		bottom -= top - imageHeight
-		top = imageHeight
+	image_height = image.shape[2]
+	if top > image_height:
+		bottom -= top - image_height
+		top = image_height
 	
 	subimage = image[z, left : right,  bottom : top]
 	return subimage
