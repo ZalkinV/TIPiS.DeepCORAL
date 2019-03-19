@@ -36,8 +36,8 @@ def cut_subimage(image, x, y, z, size):
 	return subimage
 
 
-def normalize_image(image, min, max):
-	image = (image - min)/(max - min)
+def normalize_image(image, min_val, max_val):
+	image = (image - min_val)/(max_val - min_val)
 	image[image > 1] = 1
 	image[image < 0] = 0
 	return image
