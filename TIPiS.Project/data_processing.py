@@ -81,6 +81,22 @@ def save_scan_nodules(scans_path, scan_names, candidates):
 	pass
 
 
+def load_scan_nodules():
+	hdf5_names = get_scan_names(PATH_IMAGES_PREPARED)
+	files_images = []
+	files_labels = []
+
+	for hdf5_name in hdf5_names:
+		hdf5_file_path = PATH_IMAGES_PREPARED + hdf5_name + ".hdf5"
+		with h5py.File(hdf5_file_path, "r") as hdf5_file:
+
+			for nodule_index in hdf5_file.keys():
+				files_images += [hdf5_file[nodule_index][:]]
+				files_labels += [hdf5_file[nodule_index].attrs["class"]]
+
+	return files_images, files_labels
+
+
 
 if __name__ == "main":
 	process_data()
