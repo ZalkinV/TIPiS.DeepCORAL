@@ -98,6 +98,6 @@ def load_scan_nodules():
 
 
 
-if __name__ == "main":
+if __name__ == "__main__":
 	process_data()
 	pass
