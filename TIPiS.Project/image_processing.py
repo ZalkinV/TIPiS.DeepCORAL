@@ -2,8 +2,8 @@ import data_processing as dp
 
 
 
-HU_MIN = -1000 # Max Haunsfield Unit
-HU_MAX = 400 # Min Haunsfield Unit
+HU_MIN = -1000 # Min Haunsfield Unit
+HU_MAX = 400 # Max Haunsfield Unit
 SIZE_NODULE_IMAGE = 128
 
 

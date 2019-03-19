@@ -5,10 +5,11 @@ import SimpleITK as sitk
 
 
 class CTScan:
-	""" Class for CTScan representation.
+	"""
+	Class for CTScan representation.
 	origin - coordinates of pixel with coordinates (0, 0, 0) measured in mm
 	spacing - distance between pixels in each dimension measured in mm
-	nodule - nodule characteristics (coordinates, class, etc)"""
+	"""
 
 	def __init__(self, file_name, file_path = ""):
 		self.path = file_path + file_name + ".mhd"
