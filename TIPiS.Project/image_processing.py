@@ -47,13 +47,13 @@ def save_nodules_images(file, scan, nodules_info):
 	nodule_index = 0
 	for nodule_info in nodules_info.itertuples(index=False):
 		world_coords = nodule_info[1 : 4]
+		nodule_class = nodule_info[-1]
 		image = cut_nodule(scan, world_coords, SIZE_NODULE_IMAGE)
 
-		nodule_class = nodule_info[-1]
 		nodule_name = str(nodule_index)
-		nodule_index += 1
-
 		file.create_dataset(nodule_name, data=image)
 		file[nodule_name].attrs["coords"] = world_coords
 		file[nodule_name].attrs["class"] = nodule_class
+
+		nodule_index += 1
 	pass
