@@ -1,8 +1,14 @@
 .vs/
+.idea/
 TIPiS.Project.sln
-**/*.pyproj
+*.pyproj
+
+env/
+venv/
 
 __pycache__/
+*.pyc
+
 
 data/images_raw/*
 data/images_prepared/*
