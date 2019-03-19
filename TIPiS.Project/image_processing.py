@@ -56,4 +56,3 @@ def save_nodules_images(file, scan, nodules_info):
 		file[nodule_name].attrs["class"] = nodule_class
 
 		nodule_index += 1
-	pass

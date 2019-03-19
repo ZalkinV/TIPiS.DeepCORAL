@@ -17,7 +17,6 @@ class CTScan:
 		self.raw_image = None
 		self.origin = None
 		self.spacing = None
-		pass
 
 
 	def read_scan(self):
