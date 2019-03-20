@@ -14,3 +14,5 @@ data/images_raw/*
 data/images_prepared/*
 data/info/*
 !.gitkeep
+
+TIPiS.Project/configs/local_config.py
