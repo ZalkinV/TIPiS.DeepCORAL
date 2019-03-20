@@ -5,7 +5,7 @@ import h5py
 
 from CTScan import CTScan
 import image_processing as im
-from configs.config import (
+from configs.global_config import (
 	PATH_SCANS,
 	PATH_IMAGES_PREPARED,
 	PATH_ANNOTATION,

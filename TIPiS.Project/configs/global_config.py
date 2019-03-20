@@ -11,6 +11,6 @@ PATH_CANDIDATES = "../data/info/candidates.csv"
 
 
 try:
-    from local_settings import *
+    from local_config import *
 except ImportError:
     pass

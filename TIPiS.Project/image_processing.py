@@ -1,5 +1,5 @@
 import data_processing as dp
-from configs.config import (
+from configs.global_config import (
 	HU_MIN,
 	HU_MAX,
 	SIZE_NODULE_IMAGE
