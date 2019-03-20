@@ -1,11 +1,9 @@
 import data_processing as dp
-
-
-
-HU_MIN = -1000 # Min Haunsfield Unit
-HU_MAX = 400 # Max Haunsfield Unit
-SIZE_NODULE_IMAGE = 128
-
+from configs.config import (
+	HU_MIN,
+	HU_MAX,
+	SIZE_NODULE_IMAGE
+)
 
 
 def cut_nodule(scan, world_coords, size):

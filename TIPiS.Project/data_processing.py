@@ -5,14 +5,12 @@ import h5py
 
 from CTScan import CTScan
 import image_processing as im
-
-
-
-PATH_SCANS = "../data/images_raw/"
-PATH_IMAGES_PREPARED = "../data/images_prepared/"
-PATH_ANNOTATION = "../data/info/annotations.csv"
-PATH_CANDIDATES = "../data/info/candidates.csv"
-
+from configs.config import (
+	PATH_SCANS,
+	PATH_IMAGES_PREPARED,
+	PATH_ANNOTATION,
+	PATH_CANDIDATES
+)
 
 
 def process_data():
