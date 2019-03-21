@@ -14,7 +14,7 @@ from configs.global_config import (
 
 
 def process_data():
-	scan_names = get_scan_names(PATH_SCANS)
+	scan_names = get_files_names(PATH_SCANS)
 
 	print("Candidates preparing:")
 	candidates = prepare_candidates(PATH_CANDIDATES)
@@ -22,13 +22,13 @@ def process_data():
 	save_scan_nodules(PATH_SCANS, scan_names, candidates)
 
 
-def get_scan_names(scans_path):
-	scan_names = set()
-	for file_name in os.listdir(scans_path):
+def get_files_names(path):
+	file_names = set()
+	for file_name in os.listdir(path):
 		file_name_wo_extension = file_name.rsplit('.', 1)[0]
 		if file_name_wo_extension:
-			scan_names.add(file_name_wo_extension)
-	return list(scan_names)
+			file_names.add(file_name_wo_extension)
+	return list(file_names)
 
 
 def prepare_candidates(file_name):
@@ -78,7 +78,7 @@ def save_scan_nodules(scans_path, scan_names, candidates):
 
 
 def load_scan_nodules():
-	hdf5_names = get_scan_names(PATH_IMAGES_PREPARED)
+	hdf5_names = get_files_names(PATH_IMAGES_PREPARED)
 	files_images = []
 	files_labels = []
 
