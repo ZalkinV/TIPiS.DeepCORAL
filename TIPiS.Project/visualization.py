@@ -1,3 +1,4 @@
+import os
 import math
 import matplotlib.pyplot as plt
 
@@ -31,3 +32,10 @@ def show_nodules(images, labels):
 	fig.suptitle("Nodules images")
 
 	plt.show()
+
+
+def print_title(title):
+	console_columns, console_rows = os.get_terminal_size(1)
+	print("=" * (console_columns - 1))
+	print(f"{title:^{console_columns - 1}}")
+	print("=" * (console_columns - 1))
