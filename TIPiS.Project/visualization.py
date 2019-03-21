@@ -1,3 +1,4 @@
+import math
 import matplotlib.pyplot as plt
 
 import data_processing as dp
@@ -11,19 +12,22 @@ from configs.global_config import (
 
 
 def show_nodules(images, labels):
-	pos_count = labels.count(1)
-	neg_count = labels.count(0)
-	col_count = max(pos_count, neg_count)
+	row_count = math.ceil(math.sqrt(len(images)))
+	col_count = math.ceil(len(images) / row_count)
+	widths = [images[0].shape[0] for i in range(col_count)]
+	heights = [images[0].shape[1] for i in range(row_count)]
 
-	fig, axes = plt.subplots(2, col_count, subplot_kw={ "xticks" : [], "yticks" : [] })
+	fig, axes = plt.subplots(row_count, col_count,
+						  figsize=(8,7), gridspec_kw={ "width_ratios" : widths, "height_ratios" : heights})
+	axes = axes.ravel()
+	plt.setp(axes, xticks=[], yticks=[])
+	plt.subplots_adjust(top=0.95, wspace=0, hspace=0.3)
+	
 
-	cur_subplot = [0, 0]
-	for index, label in enumerate(labels):
-		axes[label, cur_subplot[label]].imshow(images[index], cmap="gray")
-		cur_subplot[label] += 1
+	for i in range(len(images)):
+		axes[i].imshow(images[i], cmap="gray")
+		axes[i].set_xlabel(labels[i])
 
 	fig.suptitle("Nodules images")
-	axes[0, 0].set_ylabel("Negatives")
-	axes[1, 0].set_ylabel("Positives")
 
 	plt.show()
